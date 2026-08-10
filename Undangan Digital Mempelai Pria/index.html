@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Undangan Pernikahan — Kami mengundang Anda untuk hadir di hari bahagia kami.">
+  <meta name="theme-color" content="#0A1628">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Undangan Pernikahan — Love Letter Digital</title>
+
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div id="petals-container" class="petals-container" aria-hidden="true"></div>
+
+  <section id="cover" class="section section--cover">
+    <div class="corner-ornament corner-ornament--top-left" aria-hidden="true"></div>
+    <div class="corner-ornament corner-ornament--top-right" aria-hidden="true"></div>
+    <div class="corner-ornament corner-ornament--bottom-left" aria-hidden="true"></div>
+    <div class="corner-ornament corner-ornament--bottom-right" aria-hidden="true"></div>
+
+    <div class="cover__particles" aria-hidden="true"></div>
+
+    <div class="cover__content">
+      <p class="cover__label">The Wedding of</p>
+      <h1 class="cover__names" id="cover-names"></h1>
+      <p class="cover__date" id="cover-date"></p>
+
+      <div class="cover__envelope" id="cover-envelope">
+        <div class="envelope__flap"></div>
+        <div class="envelope__body">
+          <div class="envelope__letter">
+            <p class="envelope__letter-text">You're Invited</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="cover__guest-label">Kepada Yth.</p>
+      <p class="cover__guest-name" id="cover-guest-name"></p>
+
+      <button class="cover__btn" id="btn-open-invitation" type="button" aria-label="Buka Undangan">
+        <span class="cover__btn-icon">✉️</span>
+        <span class="cover__btn-text">Buka Undangan</span>
+        <span class="cover__btn-shimmer" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <main id="main-content" class="main-content" aria-hidden="true">
+
+    <section id="opening" class="section section--opening" data-scroll-reveal>
+      <div class="section__container">
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">✦</span>
+        </div>
+
+        <p class="opening__bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+        <p class="opening__bismillah-text">Bismillahirrahmanirrahim</p>
+
+        <blockquote class="opening__quote">
+          <p class="opening__arabic" id="opening-arabic"></p>
+          <p class="opening__translation" id="opening-translation"></p>
+          <cite class="opening__source" id="opening-source"></cite>
+        </blockquote>
+
+        <p class="opening__intro">
+          Assalamu'alaikum Warahmatullahi Wabarakatuh
+        </p>
+        <p class="opening__intro-sub">
+          Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara pernikahan putra-putri kami:
+        </p>
+      </div>
+    </section>
+
+    <!-- Wave: Opening → Couple (light to dark) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C360,20 720,80 1080,40 C1260,20 1380,50 1440,35 L1440,80 L0,80 Z" fill="#0A1628"/>
+    </svg>
+
+    <section id="couple" class="section section--couple" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Mempelai</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">❧</span>
+        </div>
+
+        <div class="couple__wrapper">
+          <div class="couple__person couple__groom" id="couple-groom">
+            <h3 class="couple__name" id="groom-name"></h3>
+            <p class="couple__parent-info" id="groom-parent-info"></p>
+          </div>
+
+          <div class="couple__ampersand" aria-hidden="true">
+            <span>&nbsp;&amp;&nbsp;</span>
+          </div>
+
+          <div class="couple__person couple__bride" id="couple-bride">
+            <h3 class="couple__name" id="bride-name"></h3>
+            <p class="couple__parent-info" id="bride-parent-info"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave: Couple → Events (dark to light) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C240,70 480,10 720,50 C960,90 1200,30 1440,55 L1440,80 L0,80 Z" fill="#FDFBF7"/>
+    </svg>
+
+    <section id="events" class="section section--events" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Acara Pernikahan</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">✦</span>
+        </div>
+
+        <div class="events__wrapper" id="events-wrapper"></div>
+      </div>
+    </section>
+
+    <!-- Wave: Events → Countdown (light to dark) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,50 C320,80 640,15 960,45 C1200,65 1360,25 1440,40 L1440,80 L0,80 Z" fill="#060E1A"/>
+    </svg>
+
+    <section id="countdown" class="section section--countdown" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Menuju Hari Bahagia</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">❧</span>
+        </div>
+
+        <div class="countdown__timer" id="countdown-timer">
+          <div class="countdown__box">
+            <span class="countdown__number" id="countdown-days">00</span>
+            <span class="countdown__label">Hari</span>
+          </div>
+          <div class="countdown__box">
+            <span class="countdown__number" id="countdown-hours">00</span>
+            <span class="countdown__label">Jam</span>
+          </div>
+          <div class="countdown__box">
+            <span class="countdown__number" id="countdown-minutes">00</span>
+            <span class="countdown__label">Menit</span>
+          </div>
+          <div class="countdown__box">
+            <span class="countdown__number" id="countdown-seconds">00</span>
+            <span class="countdown__label">Detik</span>
+          </div>
+        </div>
+
+        <p class="countdown__expired-msg" id="countdown-expired" hidden>
+          Alhamdulillah, hari bahagia telah tiba! 🌹
+        </p>
+      </div>
+    </section>
+
+    <!-- Wave: Countdown → Gallery (dark to light) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C480,75 960,10 1440,55 L1440,80 L0,80 Z" fill="#F5F0E8"/>
+    </svg>
+
+    <section id="gallery" class="section section--gallery" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Galeri Kami</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">✦</span>
+        </div>
+
+        <div class="gallery__swiper swiper" id="gallery-swiper">
+          <div class="swiper-wrapper" id="gallery-slides"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+      <div class="gallery__lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Lihat foto" hidden>
+        <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Tutup foto">&times;</button>
+        <img class="lightbox__image" id="lightbox-image" src="" alt="Foto pengantin">
+        <button class="lightbox__prev" id="lightbox-prev" type="button" aria-label="Foto sebelumnya">‹</button>
+        <button class="lightbox__next" id="lightbox-next" type="button" aria-label="Foto selanjutnya">›</button>
+      </div>
+    </section>
+
+    <section id="location" class="section section--location" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Lokasi Acara</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">❧</span>
+        </div>
+
+        <div class="location__tabs" id="location-tabs" role="tablist"></div>
+
+        <div class="location__panels" id="location-panels"></div>
+      </div>
+    </section>
+
+    <!-- Wave: Location → Digital Gift (light to dark) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,55 C360,20 720,70 1080,30 C1260,15 1380,50 1440,40 L1440,80 L0,80 Z" fill="#060E1A"/>
+    </svg>
+
+    <section id="digital-gift" class="section section--digital-gift" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Amplop Digital</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">✦</span>
+        </div>
+
+        <p class="digital-gift__subtitle">Titip Doa & Rezeki</p>
+        <p class="digital-gift__desc">
+          Doa restu Anda merupakan karunia yang sangat berarti bagi kami.
+          Namun jika Anda ingin memberikan tanda kasih, kami menyediakan amplop digital di bawah ini.
+        </p>
+
+        <div class="digital-gift__envelope" id="gift-envelope">
+          <div class="gift-envelope__flap" id="gift-envelope-flap"></div>
+          <div class="gift-envelope__body">
+            <div class="gift-envelope__heart" aria-hidden="true">💌</div>
+            <p class="gift-envelope__cta">Buka Amplop</p>
+          </div>
+        </div>
+
+        <div class="digital-gift__content" id="gift-content" hidden>
+          <div class="gift__tabs" id="gift-tabs" role="tablist"></div>
+          <div class="gift__panels" id="gift-panels"></div>
+        </div>
+      </div>
+
+      <div class="gift__qris-modal" id="qris-modal" role="dialog" aria-modal="true" aria-label="QR Code QRIS" hidden>
+        <div class="qris-modal__backdrop" id="qris-modal-backdrop"></div>
+        <div class="qris-modal__content">
+          <button class="qris-modal__close" id="qris-modal-close" type="button" aria-label="Tutup QR Code">&times;</button>
+          <img class="qris-modal__image" id="qris-modal-image" src="" alt="QR Code QRIS">
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave: Digital Gift → RSVP (dark to light) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,45 C480,10 960,75 1440,35 L1440,80 L0,80 Z" fill="#F5F0E8"/>
+    </svg>
+
+    <section id="rsvp" class="section section--rsvp" data-scroll-reveal>
+      <div class="section__container">
+        <h2 class="section__title">Konfirmasi Kehadiran</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">❧</span>
+        </div>
+
+        <p class="rsvp__desc">
+          Mohon konfirmasi kehadiran Anda agar kami dapat mempersiapkan acara dengan lebih baik.
+        </p>
+
+        <form class="rsvp__form" id="rsvp-form" novalidate>
+          <div class="rsvp__honeypot" aria-hidden="true">
+            <label for="rsvp-website">Website</label>
+            <input type="text" id="rsvp-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="rsvp__field">
+            <label class="rsvp__label" for="rsvp-name">Nama Lengkap <span class="rsvp__required">*</span></label>
+            <input class="rsvp__input" type="text" id="rsvp-name" name="name" placeholder="Masukkan nama lengkap Anda" required>
+          </div>
+
+          <div class="rsvp__field">
+            <label class="rsvp__label" for="rsvp-phone">No. HP / WhatsApp <span class="rsvp__required">*</span></label>
+            <input class="rsvp__input" type="tel" id="rsvp-phone" name="phone" placeholder="Contoh: 081234567890" pattern="^(08|628)\d{8,11}$" minlength="10" maxlength="14" required>
+          </div>
+
+          <div class="rsvp__field">
+            <p class="rsvp__label">Konfirmasi Kehadiran <span class="rsvp__required">*</span></p>
+            <div class="rsvp__radio-group" id="rsvp-attendance">
+              <label class="rsvp__radio">
+                <input type="radio" name="attendance" value="hadir" required>
+                <span class="rsvp__radio-mark"></span>
+                <span class="rsvp__radio-text">Hadir</span>
+              </label>
+              <label class="rsvp__radio">
+                <input type="radio" name="attendance" value="tidak_hadir">
+                <span class="rsvp__radio-mark"></span>
+                <span class="rsvp__radio-text">Tidak Hadir</span>
+              </label>
+              <label class="rsvp__radio">
+                <input type="radio" name="attendance" value="ragu">
+                <span class="rsvp__radio-mark"></span>
+                <span class="rsvp__radio-text">Masih Ragu</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp__field rsvp__field--guests" id="rsvp-guests-field" hidden>
+            <label class="rsvp__label" for="rsvp-guests">Jumlah Tamu <span class="rsvp__required">*</span></label>
+            <select class="rsvp__select" id="rsvp-guests" name="guestCount">
+              <option value="" disabled selected>Pilih jumlah</option>
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+              <option value="4">4 Orang</option>
+              <option value="5">5 Orang</option>
+            </select>
+          </div>
+
+          <div class="rsvp__field rsvp__field--events" id="rsvp-events-field" hidden>
+            <p class="rsvp__label">Acara yang Dihadiri <span class="rsvp__required">*</span></p>
+            <div class="rsvp__checkbox-group" id="rsvp-events"></div>
+          </div>
+
+          <div class="rsvp__field">
+            <label class="rsvp__label" for="rsvp-message">Pesan & Ucapan <span class="rsvp__optional">(opsional)</span></label>
+            <textarea class="rsvp__textarea" id="rsvp-message" name="message" rows="4" placeholder="Tuliskan ucapan dan doa untuk kedua mempelai..."></textarea>
+          </div>
+
+          <button class="rsvp__submit" id="rsvp-submit" type="submit">
+            <span class="rsvp__submit-text">Kirim Konfirmasi</span>
+            <span class="rsvp__submit-loader" hidden aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="rsvp__success" id="rsvp-success" hidden>
+          <div class="rsvp__success-icon">✓</div>
+          <h3 class="rsvp__success-title">Terima Kasih!</h3>
+          <p class="rsvp__success-text">Konfirmasi kehadiran Anda telah kami terima. Sampai jumpa di hari bahagia kami! 🌹</p>
+        </div>
+
+        <div style="display: none;">
+          <h3 class="section__title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Ucapan & Doa</h3>
+          <div class="guestbook__list" id="guestbook-list"></div>
+          <button class="guestbook__load-more" id="guestbook-load-more" type="button" hidden>
+            Lihat Semua Ucapan
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Wave: Guestbook → Closing (light to dark) -->
+    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C240,70 480,20 720,50 C960,80 1200,25 1440,45 L1440,80 L0,80 Z" fill="#060E1A"/>
+    </svg>
+
+    <section id="closing" class="section section--closing" data-scroll-reveal>
+      <div class="section__container">
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">❧</span>
+        </div>
+
+        <p class="closing__message" id="closing-message"></p>
+
+        <p class="closing__wassalam">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+
+        <div class="closing__couple-names">
+          <p class="closing__kami">Kami yang berbahagia,</p>
+          <h3 class="closing__names" id="closing-names"></h3>
+        </div>
+
+        <div class="closing__contact" id="closing-contact"></div>
+
+        <div class="gold-divider" aria-hidden="true">
+          <span class="gold-divider__ornament">✦</span>
+        </div>
+
+        <footer class="closing__footer">
+
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="music-player" id="music-player" hidden>
+    <div class="music-player__disc" id="music-disc" aria-hidden="true">
+      <div class="music-player__disc-inner">♪</div>
+    </div>
+    <div class="music-player__info">
+      <span class="music-player__title" id="music-title"></span>
+    </div>
+    <div class="music-player__controls">
+      <button class="music-player__btn" id="btn-play-pause" type="button" aria-label="Play / Pause musik">
+        <span class="music-player__icon music-player__icon--play" id="icon-play">▶</span>
+        <span class="music-player__icon music-player__icon--pause" id="icon-pause" hidden>⏸</span>
+      </button>
+      <button class="music-player__btn" id="btn-mute" type="button" aria-label="Mute / Unmute musik">
+        <span class="music-player__icon" id="icon-volume">🔊</span>
+      </button>
+    </div>
+    <audio id="audio-player" preload="auto" loop>
+      <source id="audio-source" src="" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <nav class="nav-dots" id="nav-dots" aria-label="Navigasi section" hidden>
+    <a class="nav-dots__dot" href="#opening" data-section="opening" aria-label="Pembuka">
+      <span class="nav-dots__tooltip">Pembuka</span>
+    </a>
+    <a class="nav-dots__dot" href="#couple" data-section="couple" aria-label="Mempelai">
+      <span class="nav-dots__tooltip">Mempelai</span>
+    </a>
+    <a class="nav-dots__dot" href="#events" data-section="events" aria-label="Acara">
+      <span class="nav-dots__tooltip">Acara</span>
+    </a>
+    <a class="nav-dots__dot" href="#countdown" data-section="countdown" aria-label="Countdown">
+      <span class="nav-dots__tooltip">Countdown</span>
+    </a>
+    <a class="nav-dots__dot" href="#gallery" data-section="gallery" aria-label="Galeri">
+      <span class="nav-dots__tooltip">Galeri</span>
+    </a>
+    <a class="nav-dots__dot" href="#location" data-section="location" aria-label="Lokasi">
+      <span class="nav-dots__tooltip">Lokasi</span>
+    </a>
+    <a class="nav-dots__dot" href="#digital-gift" data-section="digital-gift" aria-label="Amplop Digital">
+      <span class="nav-dots__tooltip">Amplop</span>
+    </a>
+    <a class="nav-dots__dot" href="#rsvp" data-section="rsvp" aria-label="RSVP">
+      <span class="nav-dots__tooltip">RSVP</span>
+    </a>
+
+    <a class="nav-dots__dot" href="#closing" data-section="closing" aria-label="Penutup">
+      <span class="nav-dots__tooltip">Penutup</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite" hidden>
+    <span class="toast__message" id="toast-message"></span>
+  </div>
+
+  <script src="config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
