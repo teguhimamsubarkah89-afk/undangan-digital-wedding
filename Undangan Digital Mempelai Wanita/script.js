@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           triggerScrollReveal();
+          startAutoScroll();
         }, 300);
       }, 1500);
     });
@@ -923,6 +924,133 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function pauseAudio() {
     if (audioPlayer) audioPlayer.pause();
+  }
+
+  // ── Auto-Scroll Feature ──
+  // Scrolls the page slowly from top to bottom after the cover is opened.
+  // Pauses when the user touches/holds the screen or clicks and holds.
+  // Resumes scrolling when they release.
+  // Compatible with all devices: desktop, tablet, and mobile.
+
+  let autoScrollActive = false;
+  let autoScrollPaused = false;
+  let autoScrollRAF = null;
+  let autoScrollResumeTimer = null;
+  const AUTO_SCROLL_SPEED = 1.5; // pixels per frame (~1.5px at 60fps = ~90px/s)
+  const AUTO_SCROLL_RESUME_DELAY = 3000; // ms to wait before resuming after manual scroll
+
+  function startAutoScroll() {
+    if (autoScrollActive) return;
+    autoScrollActive = true;
+    autoScrollPaused = false;
+    bindAutoScrollEvents();
+    autoScrollLoop();
+  }
+
+  function autoScrollLoop() {
+    if (!autoScrollActive) return;
+
+    if (!autoScrollPaused) {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY >= maxScroll - 1) {
+        // Reached the bottom, stop auto-scroll
+        stopAutoScroll();
+        return;
+      }
+      window.scrollBy(0, AUTO_SCROLL_SPEED);
+    }
+
+    autoScrollRAF = requestAnimationFrame(autoScrollLoop);
+  }
+
+  function pauseAutoScroll() {
+    autoScrollPaused = true;
+    clearTimeout(autoScrollResumeTimer);
+  }
+
+  function resumeAutoScroll() {
+    if (!autoScrollActive) return;
+    autoScrollPaused = false;
+  }
+
+  function resumeAutoScrollDelayed() {
+    if (!autoScrollActive) return;
+    clearTimeout(autoScrollResumeTimer);
+    autoScrollResumeTimer = setTimeout(() => {
+      resumeAutoScroll();
+    }, AUTO_SCROLL_RESUME_DELAY);
+  }
+
+  function stopAutoScroll() {
+    autoScrollActive = false;
+    autoScrollPaused = false;
+    if (autoScrollRAF) {
+      cancelAnimationFrame(autoScrollRAF);
+      autoScrollRAF = null;
+    }
+    clearTimeout(autoScrollResumeTimer);
+    unbindAutoScrollEvents();
+  }
+
+  // Event handlers stored as named functions so they can be removed
+  function onAutoScrollTouchStart() {
+    pauseAutoScroll();
+  }
+
+  function onAutoScrollTouchEnd() {
+    // Small delay so the page settles after touch release
+    setTimeout(() => resumeAutoScroll(), 200);
+  }
+
+  function onAutoScrollMouseDown(e) {
+    // Only pause on left click (not right-click menus etc.)
+    if (e.button === 0) pauseAutoScroll();
+  }
+
+  function onAutoScrollMouseUp() {
+    setTimeout(() => resumeAutoScroll(), 200);
+  }
+
+  function onAutoScrollWheel() {
+    // User is manually scrolling with wheel — pause and resume after delay
+    pauseAutoScroll();
+    resumeAutoScrollDelayed();
+  }
+
+  function onAutoScrollKeydown(e) {
+    // Pause on scroll-related keys
+    const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+    if (scrollKeys.includes(e.key)) {
+      pauseAutoScroll();
+      resumeAutoScrollDelayed();
+    }
+  }
+
+  function bindAutoScrollEvents() {
+    // Touch events for mobile/tablet
+    window.addEventListener('touchstart', onAutoScrollTouchStart, { passive: true });
+    window.addEventListener('touchend', onAutoScrollTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', onAutoScrollTouchEnd, { passive: true });
+
+    // Mouse events for desktop (click and hold)
+    window.addEventListener('mousedown', onAutoScrollMouseDown, { passive: true });
+    window.addEventListener('mouseup', onAutoScrollMouseUp, { passive: true });
+
+    // Wheel scroll for desktop
+    window.addEventListener('wheel', onAutoScrollWheel, { passive: true });
+
+    // Keyboard scroll
+    window.addEventListener('keydown', onAutoScrollKeydown, { passive: true });
+  }
+
+  function unbindAutoScrollEvents() {
+    window.removeEventListener('touchstart', onAutoScrollTouchStart);
+    window.removeEventListener('touchend', onAutoScrollTouchEnd);
+    window.removeEventListener('touchcancel', onAutoScrollTouchEnd);
+    window.removeEventListener('mousedown', onAutoScrollMouseDown);
+    window.removeEventListener('mouseup', onAutoScrollMouseUp);
+    window.removeEventListener('wheel', onAutoScrollWheel);
+    window.removeEventListener('keydown', onAutoScrollKeydown);
   }
 
   function initScrollEffects() {
