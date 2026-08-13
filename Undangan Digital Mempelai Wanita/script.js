@@ -936,7 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let autoScrollPaused = false;
   let autoScrollRAF = null;
   let autoScrollResumeTimer = null;
-  const AUTO_SCROLL_SPEED = 1.5; // pixels per frame (~1.5px at 60fps = ~90px/s)
+  const AUTO_SCROLL_SPEED = 2.5; // pixels per frame (~2.5px at 60fps = ~150px/s)
   const AUTO_SCROLL_RESUME_DELAY = 3000; // ms to wait before resuming after manual scroll
 
   function startAutoScroll() {
