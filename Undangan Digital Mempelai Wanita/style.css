@@ -1,7 +1,4 @@
-/* ============================================================
-   LOVE LETTER DIGITAL — Premium Wedding Invitation
-   Ultra-Luxury Gold & Navy Theme
-   ============================================================ */
+
 
 *, *::before, *::after {
   margin: 0;
@@ -9,43 +6,43 @@
   box-sizing: border-box;
 }
 
-/* ---------- DESIGN TOKENS ---------- */
+
 :root {
-  /* Gold Palette — True Metallic Gold */
+  
   --color-gold: #C9A96E;
   --color-gold-shimmer: #E8D5A8;
   --color-gold-light: #DFC088;
   --color-gold-dark: #A67C52;
   --color-gold-deep: #8B6914;
 
-  /* Rose Gold Accent */
+  
   --color-rose: #B8866F;
   --color-rose-light: #D4A999;
   --color-rose-dark: #8C5E4A;
 
-  /* Cream / Light Backgrounds */
+  
   --color-cream: #FDFBF7;
   --color-cream-warm: #F8F3EB;
   --color-cream-deep: #F0E8D8;
 
-  /* Navy / Dark Backgrounds */
+  
   --color-dark: #0A1628;
   --color-dark-soft: #162240;
   --color-dark-mid: #1E2D4F;
   --color-navy: #0F1B2D;
 
-  /* Functional */
+  
   --color-bg: #FDFBF7;
   --color-bg-alt: #F5F0E8;
   --color-white: #FFFFFF;
   --color-text: #2C1810;
   --color-text-soft: #5A4A3A;
 
-  /* Overlays */
+  
   --color-overlay: rgba(10, 22, 40, 0.85);
   --color-overlay-light: rgba(10, 22, 40, 0.50);
 
-  /* Gradients */
+  
   --gradient-gold: linear-gradient(135deg, #A67C52 0%, #C9A96E 25%, #E8D5A8 50%, #C9A96E 75%, #A67C52 100%);
   --gradient-gold-text: linear-gradient(90deg, #A67C52 0%, #E8D5A8 20%, #FFFFFF 40%, #E8D5A8 60%, #C9A96E 80%, #A67C52 100%);
   --gradient-gold-border: conic-gradient(from 0deg, #A67C52, #C9A96E, #E8D5A8, #FFFFFF, #E8D5A8, #C9A96E, #A67C52);
@@ -53,13 +50,13 @@
   --gradient-cover: linear-gradient(180deg, rgba(6,14,26,0.95) 0%, rgba(10,22,40,0.80) 40%, rgba(15,27,45,0.90) 100%);
   --gradient-rose: linear-gradient(135deg, #B8866F 0%, #D4A999 50%, #B8866F 100%);
 
-  /* Typography */
+  
   --font-heading: 'Playfair Display', 'Georgia', serif;
   --font-script: 'Great Vibes', cursive;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-arabic: 'Amiri', 'Traditional Arabic', serif;
 
-  /* Font Sizes — Fluid */
+  
   --fs-xs: clamp(0.72rem, 1.5vw, 0.82rem);
   --fs-sm: clamp(0.82rem, 2vw, 0.92rem);
   --fs-base: clamp(0.92rem, 2.5vw, 1.05rem);
@@ -71,7 +68,7 @@
   --fs-4xl: clamp(3rem, 9vw, 5rem);
   --fs-script: clamp(2.2rem, 8vw, 4.5rem);
 
-  /* Spacing */
+  
   --sp-xs: 0.25rem;
   --sp-sm: 0.5rem;
   --sp-md: 1rem;
@@ -80,14 +77,14 @@
   --sp-2xl: 4rem;
   --sp-3xl: 6rem;
 
-  /* Radius */
+  
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
   --radius-full: 50%;
 
-  /* Shadows — Gold-tinted */
+  
   --shadow-sm: 0 2px 12px rgba(201, 169, 110, 0.08);
   --shadow-md: 0 6px 24px rgba(201, 169, 110, 0.12);
   --shadow-lg: 0 12px 48px rgba(201, 169, 110, 0.18);
@@ -96,7 +93,7 @@
   --shadow-gold-glow: 0 0 30px rgba(201, 169, 110, 0.25), 0 0 60px rgba(201, 169, 110, 0.10);
   --shadow-dark: 0 8px 32px rgba(10, 22, 40, 0.25);
 
-  /* Easing & Transitions */
+  
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -105,7 +102,7 @@
   --transition-slow: 0.6s var(--ease-out);
   --transition-slower: 1s var(--ease-out);
 
-  /* Z-index Scale */
+  
   --z-petals: 1;
   --z-content: 10;
   --z-cover: 100;
@@ -116,7 +113,7 @@
   --z-confetti: 600;
 }
 
-/* ---------- BASE RESET ---------- */
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -171,7 +168,7 @@ input, select, textarea {
   border: 0;
 }
 
-/* ---------- SECTION LAYOUT ---------- */
+
 .section {
   position: relative;
   width: 100%;
@@ -196,7 +193,7 @@ input, select, textarea {
   position: relative;
 }
 
-/* ---------- SCROLL REVEAL ---------- */
+
 [data-scroll-reveal] {
   opacity: 0;
   transform: translateY(50px);
@@ -207,7 +204,7 @@ input, select, textarea {
   transform: translateY(0);
 }
 
-/* ---------- GOLD SHIMMER TEXT ---------- */
+
 .gold-shimmer-text {
   background: var(--gradient-gold-text);
   background-size: 300% auto;
@@ -221,7 +218,7 @@ input, select, textarea {
   font-weight: 400;
 }
 
-/* ---------- GOLD DIVIDER (Ornamental) ---------- */
+
 .gold-divider {
   display: flex;
   align-items: center;
@@ -247,7 +244,7 @@ input, select, textarea {
   animation: gentleFloat 3s ease-in-out infinite;
 }
 
-/* ---------- CORNER ORNAMENTS ---------- */
+
 .corner-ornament {
   position: absolute;
   width: 80px;
@@ -283,7 +280,7 @@ input, select, textarea {
   border-image: var(--gradient-gold) 1;
 }
 
-/* ---------- SVG SECTION DIVIDERS ---------- */
+
 .section-divider {
   display: block;
   width: 100%;
@@ -297,7 +294,7 @@ input, select, textarea {
   transform: scaleY(-1);
 }
 
-/* ---------- CONFETTI CANVAS ---------- */
+
 #confetti-canvas {
   position: fixed;
   top: 0;
@@ -308,7 +305,7 @@ input, select, textarea {
   pointer-events: none;
 }
 
-/* ---------- PETALS / PARTICLES ---------- */
+
 .petals-container {
   position: fixed;
   top: 0;
@@ -350,9 +347,7 @@ input, select, textarea {
   box-shadow: 0 0 6px rgba(232, 213, 168, 0.6);
 }
 
-/* ============================================================
-   COVER SECTION — Cinematic Full-Screen
-   ============================================================ */
+
 .section--cover {
   position: fixed;
   top: 0;
@@ -368,7 +363,7 @@ input, select, textarea {
   padding: var(--sp-xl);
   transition: opacity 1s var(--ease-out), visibility 1s;
 }
-/* Ornamental pattern overlay on cover */
+
 .section--cover::before {
   content: '';
   position: absolute;
@@ -380,7 +375,7 @@ input, select, textarea {
   pointer-events: none;
   z-index: 0;
 }
-/* Animated shimmer sweep across cover */
+
 .section--cover::after {
   content: '';
   position: absolute;
@@ -468,7 +463,7 @@ input, select, textarea {
   text-shadow: 0 0 15px rgba(201, 169, 110, 0.2);
 }
 
-/* Envelope — Premium */
+
 .cover__envelope {
   width: 130px;
   height: 100px;
@@ -544,7 +539,7 @@ input, select, textarea {
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* Button — Premium Glow */
+
 .cover__btn {
   position: relative;
   display: inline-flex;
@@ -585,9 +580,7 @@ input, select, textarea {
   animation: shimmerSweep 2.5s ease-in-out infinite;
 }
 
-/* ============================================================
-   MAIN CONTENT WRAPPER
-   ============================================================ */
+
 .main-content {
   opacity: 0;
   transform: translateY(30px);
@@ -599,9 +592,7 @@ input, select, textarea {
   transform: translateY(0);
 }
 
-/* ============================================================
-   OPENING SECTION
-   ============================================================ */
+
 .section--opening {
   background-color: var(--color-bg);
   padding-top: var(--sp-3xl);
@@ -699,9 +690,7 @@ input, select, textarea {
   margin: 0 auto;
 }
 
-/* ============================================================
-   COUPLE SECTION
-   ============================================================ */
+
 .section--couple {
   background: var(--gradient-dark);
   color: var(--color-cream);
@@ -731,8 +720,8 @@ input, select, textarea {
   max-width: 320px;
 }
 .couple__photo-frame {
-  width: 180px;
-  height: 180px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto var(--sp-md);
   border-radius: var(--radius-full);
   border: 3px solid var(--color-gold);
@@ -794,9 +783,7 @@ input, select, textarea {
   filter: drop-shadow(0 0 15px rgba(201, 169, 110, 0.3));
 }
 
-/* ============================================================
-   EVENTS SECTION
-   ============================================================ */
+
 .section--events {
   background-color: var(--color-bg);
   position: relative;
@@ -905,9 +892,7 @@ input, select, textarea {
   transform: translateY(-2px);
 }
 
-/* ============================================================
-   COUNTDOWN SECTION — Premium Timer
-   ============================================================ */
+
 .section--countdown {
   background: var(--gradient-dark);
   color: var(--color-cream);
@@ -995,9 +980,7 @@ input, select, textarea {
   text-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
 }
 
-/* ============================================================
-   GALLERY SECTION — Cinematic Frame
-   ============================================================ */
+
 .section--gallery {
   background-color: var(--color-bg-alt);
   position: relative;
@@ -1088,7 +1071,7 @@ input, select, textarea {
   box-shadow: 0 0 10px rgba(201, 169, 110, 0.4);
 }
 
-/* Lightbox */
+
 .gallery__lightbox {
   position: fixed;
   inset: 0;
@@ -1172,9 +1155,7 @@ input, select, textarea {
   border-color: var(--color-gold);
 }
 
-/* ============================================================
-   LOCATION SECTION
-   ============================================================ */
+
 .section--location {
   background-color: var(--color-bg);
   position: relative;
@@ -1250,9 +1231,7 @@ input, select, textarea {
   justify-content: center;
 }
 
-/* ============================================================
-   DIGITAL GIFT SECTION — Premium Envelope
-   ============================================================ */
+
 .section--digital-gift {
   background: var(--gradient-dark);
   color: var(--color-cream);
@@ -1440,7 +1419,7 @@ input, select, textarea {
   transform: translateY(-2px);
 }
 
-/* QRIS Modal */
+
 .gift__qris-modal {
   position: fixed;
   inset: 0;
@@ -1502,9 +1481,7 @@ input, select, textarea {
   border-radius: var(--radius-md);
 }
 
-/* ============================================================
-   RSVP SECTION — Refined Forms
-   ============================================================ */
+
 .section--rsvp {
   background-color: var(--color-bg-alt);
   position: relative;
@@ -1654,7 +1631,7 @@ input, select, textarea {
   transition: color var(--transition-fast);
 }
 
-/* Checkbox */
+
 .rsvp__checkbox-group {
   display: flex;
   flex-direction: column;
@@ -1710,7 +1687,7 @@ input, select, textarea {
   color: var(--color-text);
 }
 
-/* Submit Button — Premium Gold */
+
 .rsvp__submit {
   display: flex;
   align-items: center;
@@ -1766,7 +1743,7 @@ input, select, textarea {
   display: none;
 }
 
-/* RSVP Success */
+
 .rsvp__success {
   text-align: center;
   padding: var(--sp-2xl) var(--sp-lg);
@@ -1802,9 +1779,7 @@ input, select, textarea {
   color: var(--color-text-soft);
 }
 
-/* ============================================================
-   GUESTBOOK SECTION
-   ============================================================ */
+
 .section--guestbook {
   background-color: var(--color-bg);
   position: relative;
@@ -1894,7 +1869,7 @@ input, select, textarea {
   display: none;
 }
 
-/* Guestbook Cards */
+
 .guestbook__list {
   display: flex;
   flex-direction: column;
@@ -2009,9 +1984,7 @@ input, select, textarea {
   display: none;
 }
 
-/* ============================================================
-   CLOSING SECTION — Grand Finale
-   ============================================================ */
+
 .section--closing {
   background: var(--gradient-dark);
   color: var(--color-cream);
@@ -2104,9 +2077,7 @@ input, select, textarea {
   letter-spacing: 0.06em;
 }
 
-/* ============================================================
-   MUSIC PLAYER — Premium Glassmorphism
-   ============================================================ */
+
 .music-player {
   position: fixed;
   bottom: 20px;
@@ -2199,9 +2170,7 @@ input, select, textarea {
   display: none;
 }
 
-/* ============================================================
-   NAVIGATION DOTS — Enhanced
-   ============================================================ */
+
 .nav-dots {
   position: fixed;
   right: 24px;
@@ -2265,9 +2234,7 @@ input, select, textarea {
   border-left-color: rgba(10, 22, 40, 0.85);
 }
 
-/* ============================================================
-   TOAST NOTIFICATION
-   ============================================================ */
+
 .toast {
   position: fixed;
   top: 24px;
@@ -2294,9 +2261,7 @@ input, select, textarea {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-   ============================================================ */
+
 @media (min-width: 768px) {
   .section {
     padding: var(--sp-3xl) var(--sp-xl);
@@ -2391,9 +2356,7 @@ input, select, textarea {
   }
 }
 
-/* ============================================================
-   KEYFRAME ANIMATIONS
-   ============================================================ */
+
 @keyframes shimmerGold {
   0% { background-position: -300% center; }
   100% { background-position: 300% center; }
