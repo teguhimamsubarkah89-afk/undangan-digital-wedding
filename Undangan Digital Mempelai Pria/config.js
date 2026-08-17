@@ -4,14 +4,14 @@ const WEDDING_CONFIG = {
     name: "Mohammad Hadi Ifan",
     nickname: "Ifan",
     parentInfo: "Putra dari Bapak Sri Darmono & Ibu Sri Sulasmiatun",
-    photo: ""
+    photo: "assets/images/groom.jpg"
   },
 
   bride: {
     name: "Erlina Nur Amelia",
     nickname: "Erlina",
     parentInfo: "Putri dari Bapak Mulyono & Ibu Supiati",
-    photo: ""
+    photo: "assets/images/bride.jpg"
   },
 
   events: [
@@ -35,9 +35,7 @@ const WEDDING_CONFIG = {
     title: "Jalaraning Tresno - Ilham Pradana"
   },
 
-  gallery: [
-    "assets/images/engagement.jpg"
-  ],
+  gallery: [],
 
   digitalGift: {
     enabled: true,
