@@ -60,10 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (groomName) groomName.textContent = C.groom.name;
     if (groomParent) groomParent.textContent = C.groom.parentInfo;
 
+    const groomPhoto = $('groom-photo');
+    const groomPhotoFrame = $('groom-photo-frame');
+    if (groomPhoto && groomPhotoFrame && C.groom.photo) {
+      groomPhoto.src = C.groom.photo;
+      groomPhotoFrame.hidden = false;
+    }
+
     const brideName = $('bride-name');
     const brideParent = $('bride-parent-info');
     if (brideName) brideName.textContent = C.bride.name;
     if (brideParent) brideParent.textContent = C.bride.parentInfo;
+
+    const bridePhoto = $('bride-photo');
+    const bridePhotoFrame = $('bride-photo-frame');
+    if (bridePhoto && bridePhotoFrame && C.bride.photo) {
+      bridePhoto.src = C.bride.photo;
+      bridePhotoFrame.hidden = false;
+    }
 
     const eventsWrapper = $('events-wrapper');
     if (eventsWrapper) {
@@ -277,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = '';
 
-    // Gold petals
+
     for (let i = 0; i < 15; i++) {
       const petal = document.createElement('div');
       petal.className = 'petal';
@@ -288,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(petal);
     }
 
-    // Golden shimmer dots
+
     const shimmerColors = ['#E8D5A8', '#C9A96E', '#DFC088', '#FFFFFF', '#D4A999'];
     for (let i = 0; i < 25; i++) {
       const particle = document.createElement('div');
@@ -895,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (disc) disc.classList.remove('spinning');
     });
 
-    // Pause audio when browser is minimized or tab is switched
+
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         if (isPlaying) {
@@ -926,23 +940,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (audioPlayer) audioPlayer.pause();
   }
 
-  // ── Auto-Scroll Feature ──
-  // Scrolls the page slowly from top to bottom after the cover is opened.
-  // Pauses when the user touches/holds the screen or clicks and holds.
-  // Resumes scrolling when they release.
-  // Compatible with all devices: desktop, tablet, and mobile.
+
+
+
+
+
 
   let autoScrollActive = false;
   let autoScrollPaused = false;
   let autoScrollRAF = null;
   let autoScrollResumeTimer = null;
-  const AUTO_SCROLL_SPEED = 2.5; // pixels per frame (~2.5px at 60fps = ~150px/s)
-  const AUTO_SCROLL_RESUME_DELAY = 3000; // ms to wait before resuming after manual scroll
+  let autoScrollAccumulator = 0;
+  const AUTO_SCROLL_SPEED = 0.5;
+  const AUTO_SCROLL_RESUME_DELAY = 3000;
 
   function startAutoScroll() {
     if (autoScrollActive) return;
     autoScrollActive = true;
     autoScrollPaused = false;
+
+    document.documentElement.style.scrollBehavior = 'auto';
     bindAutoScrollEvents();
     autoScrollLoop();
   }
@@ -953,11 +970,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!autoScrollPaused) {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (window.scrollY >= maxScroll - 1) {
-        // Reached the bottom, stop auto-scroll
+
         stopAutoScroll();
         return;
       }
-      window.scrollBy(0, AUTO_SCROLL_SPEED);
+
+      autoScrollAccumulator += AUTO_SCROLL_SPEED;
+      if (autoScrollAccumulator >= 1) {
+        const px = Math.floor(autoScrollAccumulator);
+        window.scrollBy(0, px);
+        autoScrollAccumulator -= px;
+      }
     }
 
     autoScrollRAF = requestAnimationFrame(autoScrollLoop);
@@ -984,26 +1007,29 @@ document.addEventListener('DOMContentLoaded', () => {
   function stopAutoScroll() {
     autoScrollActive = false;
     autoScrollPaused = false;
+    autoScrollAccumulator = 0;
     if (autoScrollRAF) {
       cancelAnimationFrame(autoScrollRAF);
       autoScrollRAF = null;
     }
     clearTimeout(autoScrollResumeTimer);
     unbindAutoScrollEvents();
+
+    document.documentElement.style.scrollBehavior = 'smooth';
   }
 
-  // Event handlers stored as named functions so they can be removed
+
   function onAutoScrollTouchStart() {
     pauseAutoScroll();
   }
 
   function onAutoScrollTouchEnd() {
-    // Small delay so the page settles after touch release
+
     setTimeout(() => resumeAutoScroll(), 200);
   }
 
   function onAutoScrollMouseDown(e) {
-    // Only pause on left click (not right-click menus etc.)
+
     if (e.button === 0) pauseAutoScroll();
   }
 
@@ -1012,13 +1038,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function onAutoScrollWheel() {
-    // User is manually scrolling with wheel — pause and resume after delay
+
     pauseAutoScroll();
     resumeAutoScrollDelayed();
   }
 
   function onAutoScrollKeydown(e) {
-    // Pause on scroll-related keys
+
     const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
     if (scrollKeys.includes(e.key)) {
       pauseAutoScroll();
@@ -1027,19 +1053,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function bindAutoScrollEvents() {
-    // Touch events for mobile/tablet
+
     window.addEventListener('touchstart', onAutoScrollTouchStart, { passive: true });
     window.addEventListener('touchend', onAutoScrollTouchEnd, { passive: true });
     window.addEventListener('touchcancel', onAutoScrollTouchEnd, { passive: true });
 
-    // Mouse events for desktop (click and hold)
+
     window.addEventListener('mousedown', onAutoScrollMouseDown, { passive: true });
     window.addEventListener('mouseup', onAutoScrollMouseUp, { passive: true });
 
-    // Wheel scroll for desktop
+
     window.addEventListener('wheel', onAutoScrollWheel, { passive: true });
 
-    // Keyboard scroll
+
     window.addEventListener('keydown', onAutoScrollKeydown, { passive: true });
   }
 
