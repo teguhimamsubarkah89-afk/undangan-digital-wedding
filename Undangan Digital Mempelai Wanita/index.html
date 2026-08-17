@@ -84,7 +84,7 @@
       </div>
     </section>
 
-    <!-- Wave: Opening → Couple (light to dark) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,60 C360,20 720,80 1080,40 C1260,20 1380,50 1440,35 L1440,80 L0,80 Z" fill="#0A1628"/>
     </svg>
@@ -98,6 +98,9 @@
 
         <div class="couple__wrapper">
           <div class="couple__person couple__groom" id="couple-groom">
+            <div class="couple__photo-frame" id="groom-photo-frame" hidden>
+              <img class="couple__photo" id="groom-photo" src="" alt="Foto Mempelai Pria" loading="lazy">
+            </div>
             <h3 class="couple__name" id="groom-name"></h3>
             <p class="couple__parent-info" id="groom-parent-info"></p>
           </div>
@@ -107,6 +110,9 @@
           </div>
 
           <div class="couple__person couple__bride" id="couple-bride">
+            <div class="couple__photo-frame" id="bride-photo-frame" hidden>
+              <img class="couple__photo" id="bride-photo" src="" alt="Foto Mempelai Wanita" loading="lazy">
+            </div>
             <h3 class="couple__name" id="bride-name"></h3>
             <p class="couple__parent-info" id="bride-parent-info"></p>
           </div>
@@ -114,7 +120,7 @@
       </div>
     </section>
 
-    <!-- Wave: Couple → Events (dark to light) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,40 C240,70 480,10 720,50 C960,90 1200,30 1440,55 L1440,80 L0,80 Z" fill="#FDFBF7"/>
     </svg>
@@ -130,7 +136,7 @@
       </div>
     </section>
 
-    <!-- Wave: Events → Countdown (light to dark) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,50 C320,80 640,15 960,45 C1200,65 1360,25 1440,40 L1440,80 L0,80 Z" fill="#060E1A"/>
     </svg>
@@ -167,34 +173,6 @@
       </div>
     </section>
 
-    <!-- Wave: Countdown → Gallery (dark to light) -->
-    <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C480,75 960,10 1440,55 L1440,80 L0,80 Z" fill="#F5F0E8"/>
-    </svg>
-
-    <section id="gallery" class="section section--gallery" data-scroll-reveal>
-      <div class="section__container">
-        <h2 class="section__title">Galeri Kami</h2>
-        <div class="gold-divider" aria-hidden="true">
-          <span class="gold-divider__ornament">✦</span>
-        </div>
-
-        <div class="gallery__swiper swiper" id="gallery-swiper">
-          <div class="swiper-wrapper" id="gallery-slides"></div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
-
-      <div class="gallery__lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Lihat foto" hidden>
-        <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Tutup foto">&times;</button>
-        <img class="lightbox__image" id="lightbox-image" src="" alt="Foto pengantin">
-        <button class="lightbox__prev" id="lightbox-prev" type="button" aria-label="Foto sebelumnya">‹</button>
-        <button class="lightbox__next" id="lightbox-next" type="button" aria-label="Foto selanjutnya">›</button>
-      </div>
-    </section>
-
     <section id="location" class="section section--location" data-scroll-reveal>
       <div class="section__container">
         <h2 class="section__title">Lokasi Acara</h2>
@@ -208,7 +186,7 @@
       </div>
     </section>
 
-    <!-- Wave: Location → Digital Gift (light to dark) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,55 C360,20 720,70 1080,30 C1260,15 1380,50 1440,40 L1440,80 L0,80 Z" fill="#060E1A"/>
     </svg>
@@ -249,7 +227,7 @@
       </div>
     </section>
 
-    <!-- Wave: Digital Gift → RSVP (dark to light) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,45 C480,10 960,75 1440,35 L1440,80 L0,80 Z" fill="#F5F0E8"/>
     </svg>
@@ -347,7 +325,7 @@
       </div>
     </section>
 
-    <!-- Wave: Guestbook → Closing (light to dark) -->
+    
     <svg class="section-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,40 C240,70 480,20 720,50 C960,80 1200,25 1440,45 L1440,80 L0,80 Z" fill="#060E1A"/>
     </svg>
@@ -415,9 +393,7 @@
     <a class="nav-dots__dot" href="#countdown" data-section="countdown" aria-label="Countdown">
       <span class="nav-dots__tooltip">Countdown</span>
     </a>
-    <a class="nav-dots__dot" href="#gallery" data-section="gallery" aria-label="Galeri">
-      <span class="nav-dots__tooltip">Galeri</span>
-    </a>
+
     <a class="nav-dots__dot" href="#location" data-section="location" aria-label="Lokasi">
       <span class="nav-dots__tooltip">Lokasi</span>
     </a>
